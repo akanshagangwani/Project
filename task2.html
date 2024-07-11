@@ -7,7 +7,13 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
     }
     #myElement {
       color: black;
@@ -15,23 +21,46 @@
       border: 1px solid black;
       padding: 20px;
       margin-bottom: 20px;
+      background-color: white;
+      border-radius: 10px;
       transition: all 0.3s ease;
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
     }
     #controls {
       display: flex;
       flex-direction: column;
-      max-width: 300px;
+      align-items: center;
+      width: 80%;
+      max-width: 600px;
     }
     .control-group {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      width: 100%;
     }
     label {
       margin-bottom: 5px;
+      display: block;
     }
     input, button {
       padding: 10px;
       font-size: 16px;
       width: 100%;
+      box-sizing: border-box;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -60,14 +89,20 @@
   <script>
     const elem = document.getElementById('myElement');
     document.getElementById('changeBtn').onclick = () => {
-      elem.textContent = document.getElementById('contentInput').value || elem.textContent;
-      elem.style.color = document.getElementById('colorInput').value;
-      elem.style.fontSize = `${document.getElementById('fontSizeInput').value || 16}px`;
-      elem.style.backgroundColor = document.getElementById('bgColorInput').value;
+      const newText = document.getElementById('contentInput').value;
+      const newColor = document.getElementById('colorInput').value;
+      const newSize = document.getElementById('fontSizeInput').value;
+      const newBgColor = document.getElementById('bgColorInput').value;
+
+      if (newText) elem.textContent = newText;
+      elem.style.color = newColor;
+      elem.style.fontSize = newSize ? `${newSize}px` : '16px';
+      elem.style.backgroundColor = newBgColor;
     };
   </script>
 </body>
 </html>
+
 
 
 
